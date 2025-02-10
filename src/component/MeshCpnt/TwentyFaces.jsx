@@ -3,12 +3,12 @@ import { useRef, useState } from "react";
 import { Dicesmap } from "./DicesMap";
 
 export default function TwentyFaces({ position, rotation, textureId }){
-    const { nodes } = useGLTF('/models/twentyFacesDice.glb')
+    const { nodes } = useGLTF('./models/twentyFacesDice.glb')
     const meshRef = useRef()
     const texture = useRef({})
 
     Dicesmap.d20.forEach((t) => {
-        texture.current[t.id] = useTexture({map: t.map, normalMap: "/images/texturesPack/d20/d20_nm.png"})
+        texture.current[t.id] = useTexture({map: t.map, normalMap: "./images/texturesPack/d20/d20_nm.png"})
         texture.current[t.id].map.flipY = false
         texture.current[t.id].normalMap.flipY = false
         texture.current[t.id].roughness = 0.4

@@ -1,9 +1,8 @@
 import { useGLTF } from "@react-three/drei";
-import { RigidBody } from "@react-three/rapier";
 import { useRef } from "react";
 
 export default function PisteExt({position}){
-    const { nodes } = useGLTF('/models/pisteExt.glb')
+    const { nodes } = useGLTF('./models/pisteExt.glb')
     const meshRef = useRef()
 
     return (

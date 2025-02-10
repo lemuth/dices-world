@@ -6,12 +6,12 @@ export default function TextureManager() {
 
     const {textureId, setTextureId} = useContext(RollDiceContext)
     const source = [
-        "/images/miniature/blue.jpg",
-        "/images/miniature/gold.jpg",
-        "/images/miniature/green.jpg",
-        "/images/miniature/pink.jpg",
-        "/images/miniature/red.jpg",
-        "/images/miniature/violet.jpg"
+        "./images/miniature/blue.jpg",
+        "./images/miniature/gold.jpg",
+        "./images/miniature/green.jpg",
+        "./images/miniature/pink.jpg",
+        "./images/miniature/red.jpg",
+        "./images/miniature/violet.jpg"
     ]
 
     const prev = () => { setTextureId(textureId === 0 ? source.length -1 : textureId - 1) }
@@ -23,7 +23,7 @@ export default function TextureManager() {
                 <Image
                     key="prev"
                     alt="prev"
-                    src="/images/icone/double_arrow.png"
+                    src="./images/icone/double_arrow.png"
                     width={40}
                     height={40}
                     className="rotate-180"
@@ -69,7 +69,7 @@ export default function TextureManager() {
                 <Image
                     key="next"
                     alt="next"
-                    src="/images/icone/double_arrow.png"
+                    src="./images/icone/double_arrow.png"
                     width={40}
                     height={40}
                 />

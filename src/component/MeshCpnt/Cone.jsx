@@ -2,7 +2,7 @@ import { useGLTF } from "@react-three/drei";
 import { useRef } from "react";
 
 export default function Cone({position}){
-    const { nodes } = useGLTF('/models/cone.glb')
+    const { nodes } = useGLTF('./models/cone.glb')
     const meshRef = useRef()
     
     return (

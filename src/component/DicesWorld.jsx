@@ -234,8 +234,8 @@ export default function DicesWorld(){
     }, [])
     
     useEffect(() => {
-        plastiqueContactRef.current = new Audio("/sound/plast_collision.mp3");
-        woodContactRef.current = new Audio("/sound/wood_collision.mp3");
+        plastiqueContactRef.current = new Audio("./sound/plast_collision.mp3");
+        woodContactRef.current = new Audio("./sound/wood_collision.mp3");
 
         // Nettoyer les éléments audio lors du démontage du composant
         return () => {
