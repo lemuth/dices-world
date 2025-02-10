@@ -1,7 +1,7 @@
 import { useGLTF } from "@react-three/drei";
 
 export default function Distributeur({ref}){
-    const { nodes } = useGLTF('/models/distributeur.glb')
+    const { nodes } = useGLTF('./models/distributeur.glb')
 console.log("ok", ref)
     return (
         <group>

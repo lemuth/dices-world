@@ -1,5 +1,4 @@
 import { useGLTF } from "@react-three/drei";
-import { RigidBody } from "@react-three/rapier";
 import { useRef } from "react";
 
 export default function Piste({position}){
