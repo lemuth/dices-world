@@ -6,6 +6,7 @@ import DiceSelector from "./DiceSelector";
 import RollPreparation from "./RollPreparation"
 import RollPhysics from "./RollPhysics";
 import { RollDiceContext } from "@/context/RollDiceContext";
+import Title from "@/component/Title"
 
 export default function Scene(){
 
@@ -85,6 +86,7 @@ export default function Scene(){
                 <div className="flex w-full justify-center absolute bottom-10">
                     <DiceSelector />
                 </div>
+                <Title />
             </div>
                 
         </div>
