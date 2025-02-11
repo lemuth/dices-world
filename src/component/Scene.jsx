@@ -88,7 +88,6 @@ export default function Scene(){
                 </div>
                 <Title />
             </div>
-                
         </div>
     )
 }
