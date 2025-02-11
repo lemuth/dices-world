@@ -1,6 +1,7 @@
 import { useGLTF, useTexture } from "@react-three/drei";
 import { useRef, useState } from "react";
 import { Dicesmap } from "./DicesMap";
+import d4NormalMap from "@/assets/images/texturesPack/d4/d4_nm.png"
 
 export default function FourFaces({ position, rotation, textureId }){
 
@@ -9,7 +10,7 @@ export default function FourFaces({ position, rotation, textureId }){
     const texture = useRef({})
 
     Dicesmap.d4.forEach((t) => {
-        texture.current[t.id] = useTexture({map: t.map, normalMap: "./images/texturesPack/d4/d4_nm.png"})
+        texture.current[t.id] = useTexture({map: t.map.src, normalMap: d4NormalMap.src})
         texture.current[t.id].map.flipY = false
         texture.current[t.id].normalMap.flipY = false
         texture.current[t.id].roughness = 0.4

@@ -2,7 +2,7 @@ import { useGLTF } from "@react-three/drei";
 import { useRef } from "react";
 
 export default function Piste({position}){
-    const { nodes, materials } = useGLTF('/models/piste.glb')
+    const { nodes, materials } = useGLTF('./models/piste.glb')
     const meshRef = useRef()
 
     return (

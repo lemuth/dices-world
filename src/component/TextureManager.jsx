@@ -1,17 +1,24 @@
 import { RollDiceContext } from "@/context/RollDiceContext"
 import Image from "next/image"
 import { useContext } from "react"
+import blue from "@/assets/images/miniature/blue.jpg"
+import gold from "@/assets/images/miniature/gold.jpg"
+import green from "@/assets/images/miniature/green.jpg"
+import pink from "@/assets/images/miniature/pink.jpg"
+import red from "@/assets/images/miniature/red.jpg"
+import violet from "@/assets/images/miniature/violet.jpg"
+import doubleArrow from "@/assets//images/icone/double_arrow.png"
 
 export default function TextureManager() {
 
     const {textureId, setTextureId} = useContext(RollDiceContext)
     const source = [
-        "./images/miniature/blue.jpg",
-        "./images/miniature/gold.jpg",
-        "./images/miniature/green.jpg",
-        "./images/miniature/pink.jpg",
-        "./images/miniature/red.jpg",
-        "./images/miniature/violet.jpg"
+        blue,
+        gold,
+        green,
+        pink,
+        red,
+        violet
     ]
 
     const prev = () => { setTextureId(textureId === 0 ? source.length -1 : textureId - 1) }
@@ -23,7 +30,7 @@ export default function TextureManager() {
                 <Image
                     key="prev"
                     alt="prev"
-                    src="./images/icone/double_arrow.png"
+                    src={doubleArrow}
                     width={40}
                     height={40}
                     className="rotate-180"
@@ -69,7 +76,7 @@ export default function TextureManager() {
                 <Image
                     key="next"
                     alt="next"
-                    src="./images/icone/double_arrow.png"
+                    src={doubleArrow}
                     width={40}
                     height={40}
                 />
