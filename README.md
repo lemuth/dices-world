@@ -1,9 +1,5 @@
 # Dices-World
 
-Greetings !
-This is a nextJs project using threeJs, react-three/fiber, and react-three/rapier
-# 🎮 Mon Projet 3D avec Next.js, React Three Fiber et Rapier
-
 Bienvenue dans Dices World ! Développé avec **Next.js**, **React Three Fiber** et **React Three Rapier** ! 🚀  
 
 ## 📦 Technologies utilisées  
