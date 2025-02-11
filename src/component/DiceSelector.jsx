@@ -26,12 +26,12 @@ export default function DiceSelector(){
                 <div>
                     <div className="flex justify-center items-center">
                         <button
-                            className={`w-full px-4 py-2 text-black rounded-md border ${dicePool.length > 0 ? "border-cyan-700 bg-cyan-500 hover:bg-cyan-600" : "border-gray-700 bg-gray-500 hover:bg-gray-600"}"}`}
+                            className={`w-full px-4 py-2 text-black rounded-md border ${dicePool.length > 0 ? "border-cyan-700 bg-cyan-500/80 transition hover:bg-cyan-700/80 hover:text-cyan-200" : "border-gray-700 bg-gray-500/80"}`}
                             onClick={onStart}
                         >Lancer</button>
                         <TextureManager />
                         <button
-                            className={`w-full px-4 py-2 text-black rounded-md border border-cyan-700 transition-colors bg-cyan-500 hover:bg-cyan-600"}`}
+                            className={"w-full px-4 py-2 text-black rounded-md border border-cyan-700 transition-colors bg-cyan-500/80 hover:bg-cyan-700/80 hover:text-cyan-200"}
                             onClick={cleanBoard}
                         >Clean</button>
                     </div>
@@ -68,12 +68,12 @@ export default function DiceSelector(){
                 :
                 <div>
                     <button
-                        className={`w-full px-4 py-2 text-black rounded-md border border-cyan-700 transition-colors bg-cyan-500 hover:bg-cyan-600"}`}
+                        className="w-full px-4 py-2 text-black rounded-md border border-cyan-700 bg-cyan-500/80 transition hover:bg-cyan-700/80 hover:text-cyan-200"
                         onClick={onRelaunch}
                     >Relancer</button>
                     <button
                         onClick={cleanBoard}
-                        className={`mt-2 px-4 py-2 text-black rounded-md w-full border border-cyan-700 transition-colors bg-cyan-500 hover:bg-cyan-600"}`}
+                        className="mt-2 px-4 py-2 text-black rounded-md w-full border border-cyan-700 bg-cyan-500/80 transition hover:bg-cyan-700/80 hover:text-cyan-200"
                     >Nettoyer</button>
                 </div>
             }
