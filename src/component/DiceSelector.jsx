@@ -39,7 +39,7 @@ export default function DiceSelector(){
                         {
                             Object.keys(dices).map((dice) => {
                                 return (
-                                    <div className="flex-col justify-center items-center rounded-t-sm rounded-b-3xl border border-cyan-200 bg-cyan-500/50">
+                                    <div key={dice} className="flex-col justify-center items-center rounded-t-sm rounded-b-3xl border border-cyan-200 bg-cyan-500/50">
                                         <p className="w-full text-white text-center">{dices[dice]}</p>
                                         <button
                                             className="flex w-full justify-center font-bold text text-3xl bg-cyan-600/80  text-white border border-cyan-800 rounded-md hover:bg-cyan-300 shadow-lg hover:text-black hover:border-cyan-200"
