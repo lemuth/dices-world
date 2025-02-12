@@ -1,8 +1,9 @@
-import { RigidBody } from "@react-three/rapier";
+import { RigidBody, useRapier } from "@react-three/rapier";
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import * as THREE from "three"
 import { RollDiceContext } from "@/context/RollDiceContext";
-// Dices
+import { hennyPenny } from "@/lib/fonts"
+// mesh : Dices
 import TwelveFaces from "./MeshCpnt/TwelveFaces";
 import SixFaces from "./MeshCpnt/SixFaces"
 import Piste from "./MeshCpnt/Piste";
@@ -11,17 +12,17 @@ import TwentyFaces from "./MeshCpnt/TwentyFaces";
 import TenFaces from "./MeshCpnt/TenFaces";
 import TenFacesDizaine from "./MeshCpnt/TenFacesDizaine";
 import FourFaces from "./MeshCpnt/FourFaces";
-// Others colliders
+// mesh: Others colliders
 import PlaneCollider from "./MeshCpnt/PlaneCollider";
 import Cone from "./MeshCpnt/Cone";
 import PisteExt from "./MeshCpnt/PisteExt";
 import { Html } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 
-function Dice({ dice, position, rotation, collisionSound, scoreBord, setScoreBord }){
+function Dice({ dice, position, rotation, collisionSound, allDicesStoppedRef }){
 
-    const rigidBodyRef = useRef();
+    const rigidBodyRef = useRef()
     const diceGroupRef = useRef()
-    const {handleMovingDices} = useContext(RollDiceContext)
     const raycaster = new THREE.Raycaster()
 
     const faceIndexValue = {
@@ -185,13 +186,12 @@ function Dice({ dice, position, rotation, collisionSound, scoreBord, setScoreBor
                 if(dice.type === "d4" || dice.type === "d6"){
                     result = getTopFace(rigidBodyRef.current, dice.type)
                 } else {
-                    result = getTopFaceRaycast(dice.type);
+                    result = getTopFaceRaycast(dice.type)
                 }
                 if (result !== null ) {
-                    console.log("Résultat du lancer :", result);
-                    // if (!scoreBord.includes(dice)) {
-                    //     handleMovingDices(dice, result)
-                    // }
+                    allDicesStoppedRef.current = [...allDicesStoppedRef.current,
+                        result
+                    ]
                 }
             }}
         >
@@ -223,7 +223,6 @@ export default function DicesWorld(){
     // Gestion des sons au contact
     const plastiqueContactRef = useRef(null)
     const woodContactRef = useRef(null)
-    const [scoreBord, setScoreBord] = useState([])
 
     const collisionSound = useCallback((type) => {
         if (type === "dice" && plastiqueContactRef.current) {
@@ -241,8 +240,31 @@ export default function DicesWorld(){
         return () => {
             plastiqueContactRef.current = null;
             woodContactRef.current = null;
-        };
-    }, []);
+        }
+    }, [])
+
+    const allDicesStoppedRef = useRef([])
+    const scoreRef = useRef()
+    const divRef = useRef()
+
+    useFrame(() => {
+        if(allDicesStoppedRef.current.length === dicePool.length){
+
+            if(allDicesStoppedRef.current.includes(undefined)){
+                scoreRef.current.innerText = `Cassé!`
+            }else {
+                const result = allDicesStoppedRef.current.reduce((acc, value) => acc + value)
+                scoreRef.current.innerText = `Score ${result}`
+            }
+            divRef.current.className = `flex justify-center items-center relative left-20 
+                bg-cyan-500/70 p-6 rounded-2xl text-center 
+                ring-4 ring-cyan-300/50 
+                text-cyan-200 tracking-wide text-xl 
+                transition-all duration-300 animate-fadeIn ${hennyPenny.className}`
+        } else {
+            return
+        }
+    })
 
     return (
         <>
@@ -299,22 +321,15 @@ export default function DicesWorld(){
                             position={position}
                             rotation={rotation}
                             collisionSound={collisionSound}
-                            scoreBord={scoreBord}
-                            setScoreBord={setScoreBord}
+                            allDicesStoppedRef= {allDicesStoppedRef}
                         />
                     )
                 })
             }
             <Html>
-                {
-                    scoreBord.length > 0 &&
-                    scoreBord.map((dice, index) => {
-                        return(
-                            <p key={index}>score: {dice.result}</p>
-                        )
-                    })
-                }
-                <div>
+
+                <div ref={divRef} className="invisible">
+                    <span ref={scoreRef} />
                 </div>
             </Html>
         </>

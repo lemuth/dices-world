@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { RollDiceContext } from "@/context/RollDiceContext";
 
 export default function RollPhysics() {
-    const { isPaused, keyFrame, betweenRoll } = useContext(RollDiceContext)
+    const { isPaused, keyFrame } = useContext(RollDiceContext)
     
     return (
         <Physics
