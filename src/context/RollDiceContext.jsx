@@ -27,18 +27,11 @@ const RollDiceProvider = ({ children }) => {
     const [ selectPhase, setSelectPhase ]   = useState(true)
     const [ betweenRoll, setBetweenRoll ]   = useState(false)
     const [ textureId, setTextureId ]       = useState(0)
-    const allDicesStoppedRef                = useRef([])
     const [ endDiceParam, setEndDiceParam ] = useState([])
 
     const onStart = () => {
-        // if (betweenRoll.current) {
-        //     setBetweenRoll(false)
-        //     setKeyFrame(keyFrame += 1)
-        // } else {
-        // }
         setSelectPhase(false)
         setIsPaused(false)
-        // allDicesStoppedRef.current = []
     }
 
     const onRelaunch = () => {
@@ -50,7 +43,6 @@ const RollDiceProvider = ({ children }) => {
         setIsPaused(false)
         setSelectPhase(false)
         setKeyFrame(keyFrame += 1)
-        allDicesStoppedRef.current = []
     }
 
     const addDice = (type) => {
@@ -61,7 +53,6 @@ const RollDiceProvider = ({ children }) => {
                 { id: newDiceId, type: type, map: textureId, result: null }
             ]
         )
-        
         setDices(
             {
                 ...dices,
@@ -91,18 +82,6 @@ const RollDiceProvider = ({ children }) => {
         setSelectPhase(true)
     }
 
-    const handleMovingDices = (dice, result, rigidBodyRef) => {
-        if (!allDicesStoppedRef.current.includes(dice)) {
-            allDicesStoppedRef.current = [...allDicesStoppedRef.current,
-                {...dice, result }
-            ]
-            
-            if(dicePool.length === allDicesStoppedRef.current.length){
-
-            }
-        }
-    }
-
     return <RollDiceContext.Provider
             value={{
                 isPaused: isPaused,
@@ -111,7 +90,6 @@ const RollDiceProvider = ({ children }) => {
                 dicePool: dicePool,
                 selectPhase: selectPhase,
                 betweenRoll: betweenRoll,
-                allDicesStopped: allDicesStoppedRef.current,
                 endDiceParam: endDiceParam,
                 textureId: textureId,
                 setTextureId: (id) => { setTextureId(id) },
@@ -120,8 +98,7 @@ const RollDiceProvider = ({ children }) => {
                 onReset,
                 addDice,
                 removeDice,
-                cleanBoard,
-                handleMovingDices
+                cleanBoard
             }}
         >
             {children}
