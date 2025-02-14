@@ -256,7 +256,7 @@ export default function DicesWorld(){
                 const result = allDicesStoppedRef.current.reduce((acc, value) => acc + value)
                 scoreRef.current.innerText = `Score ${result}`
             }
-            divRef.current.className = `flex justify-center items-center relative left-20 
+            divRef.current.className = `flex justify-center items-center relative
                 bg-cyan-500/70 p-6 rounded-2xl text-center 
                 ring-4 ring-cyan-300/50 
                 text-cyan-200 tracking-wide text-xl 

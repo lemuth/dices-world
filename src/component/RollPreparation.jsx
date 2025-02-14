@@ -60,7 +60,7 @@ export default function RollPreparation(){
                     const col = index % 5
 
                     return (
-                        <Dice key={`${dice + index}`} type={dice.type} position={[ (2 - col) * -0.8, 0.5, -1.6 + (row *0.6)]} textureId={dice.map} />
+                        <Dice key={`${dice + index}`} type={dice.type} position={[ (2 - col) * -0.8, dice.type === "d4" || dice.type === "d6" ? 0.35 : 0.6, -1.6 + (row *0.6)]} textureId={dice.map} />
                     )
                 })
             }
