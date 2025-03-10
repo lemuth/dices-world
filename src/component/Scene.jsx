@@ -19,7 +19,6 @@ export default function Scene(){
     const cameraTarget = [0, -1, 0 ]
 
     function recenter(){
-
         if (cameraRef.current) {
             cameraRef.current.object.position.set(...cameraPosition);
             cameraRef.current.target.set(...cameraTarget);

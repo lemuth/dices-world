@@ -9,7 +9,7 @@ const Scene = dynamic(() => import('@/component/Scene'), {
 
 export default function Home() {
   return (
-    <div className="flex w-screen h-screen bg-cover bg-bg_image">
+    <div className="flex w-screen h-[100dvh] bg-cover bg-bg_image">
         <Suspense fallback={<div>Chargement...</div>}>
           <Scene />
         </Suspense>
