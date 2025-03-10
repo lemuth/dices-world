@@ -1,7 +1,6 @@
 import { OrbitControls } from "@react-three/drei";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { Suspense, useContext, useRef } from "react";
-import { CameraHelper } from 'three';
 import DiceSelector from "./DiceSelector";
 import RollPreparation from "./RollPreparation"
 import RollPhysics from "./RollPhysics";
@@ -19,10 +18,6 @@ export default function Scene(){
     const cameraTarget = [0, -1, 0 ]
 
     function recenter(){
-<<<<<<< HEAD
-=======
-
->>>>>>> 4952d41167039794a3b0cea23195da8c71cea52d
         if (cameraRef.current) {
             cameraRef.current.object.position.set(...cameraPosition);
             cameraRef.current.target.set(...cameraTarget);
